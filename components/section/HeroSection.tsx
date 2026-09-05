@@ -1,4 +1,4 @@
-// src/components/sections/HeroSection.tsx
+// components/sections/HeroSection.tsx
 'use client';
 
 import React from 'react';
@@ -8,8 +8,8 @@ import { HERO_CONTENT } from '@/content/vertas-data';
 import { IndustrialGrid } from '@/components/common/IndustrialGrid';
 
 interface HeroSectionProps {
-  onRequestQuote: () => void;
-  onTalkToEngineer: () => void;
+  onRequestQuote?: () => void;
+  onTalkToEngineer?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -21,7 +21,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <IndustrialGrid />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        {/* Compliance / Status Badge */}
+        {/* Status Badge */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </span>
         </motion.div>
 
-        {/* Technical Headline */}
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {HERO_CONTENT.headline}
         </motion.h1>
 
-        {/* Subline - Strict WCAG AA */}
+        {/* Subline */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,14 +54,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {HERO_CONTENT.subline}
         </motion.p>
 
-        {/* Dual Conversion Engine */}
+        {/* Dual Conversion Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 flex flex-wrap items-center gap-4 sm:gap-5"
         >
-          {/* Primary CTA 1: Request a Quote */}
           <button
             onClick={onRequestQuote}
             className="group inline-flex items-center gap-2.5 bg-industrial-emerald hover:bg-emerald-400 text-slate-950 font-semibold px-6 py-3.5 rounded transition-all duration-150 shadow-industrial-glow hover:shadow-industrial-glow-hover cursor-pointer"
@@ -71,7 +70,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
 
-          {/* Primary CTA 2: Talk to an Engineer */}
           <button
             onClick={onTalkToEngineer}
             className="group inline-flex items-center gap-2.5 bg-industrial-surface hover:bg-industrial-elevated border border-industrial-border hover:border-industrial-border-hover text-industrial-slate-body hover:text-white font-medium px-6 py-3.5 rounded transition-all duration-150 cursor-pointer"
@@ -81,7 +79,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </button>
         </motion.div>
 
-        {/* Engineering Metrics Ribbon */}
+        {/* Metrics */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
