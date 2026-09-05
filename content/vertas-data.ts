@@ -8,8 +8,9 @@ export const VERTAS_LEGAL: CompanyLegalInfo = {
   taxCode: '3703443995',
   establishedDate: '2026-02-13',
   representative: 'NGUYỄN VĂN CHIẾN THẮNG',
-  registeredOffice: '160 Bùi Thị Cội, KP. Đông An, P. Tân Đông Hiệp, TP. Dĩ An, Bình Dương',
-  natureOfOperations: 'Trung tâm Nghiên cứu Ứng dụng, Tích hợp Hệ thống Đo lường & Dịch vụ Kỹ thuật Công nghiệp'
+  registeredOffice: '160 Bùi Thị Cội, Khu phố Đông An, Phường Tân Đông Hiệp, TP. Hồ Chí Minh',
+  natureOfOperations: 'Nghiên cứu R&D, Tích hợp Hệ thống Đo lường & Giải pháp Kỹ thuật Công nghiệp',
+  hotlineEngineering: process.env.NEXT_PUBLIC_HOTLINE_PHONE || '0966200378'
 };
 
 export const HERO_CONTENT = {
