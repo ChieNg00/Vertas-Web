@@ -64,7 +64,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Primary CTA 1: Request a Quote */}
           <button
             onClick={onRequestQuote}
-            className="group inline-flex items-center gap-2.5 bg-industrial-emerald hover:bg-emerald-400 text-slate-950 font-semibold px-6 py-3.5 rounded transition-all duration-150 shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] cursor-pointer"
+            className="group inline-flex items-center gap-2.5 bg-industrial-emerald hover:bg-emerald-400 text-slate-950 font-semibold px-6 py-3.5 rounded transition-all duration-150 shadow-industrial-glow hover:shadow-industrial-glow-hover cursor-pointer"
           >
             <FileSpreadsheet className="w-4 h-4 text-slate-950" />
             <span>Request a Quote</span>
