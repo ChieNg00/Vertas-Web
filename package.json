@@ -1,27 +1,21 @@
 {
   "name": "vertas-web",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ChieNg00/Vertas-Web.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/ChieNg00/Vertas-Web/issues"
-  },
-  "homepage": "https://github.com/ChieNg00/Vertas-Web#readme",
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-tabs": "^1.1.21",
     "clsx": "^2.1.1",
     "framer-motion": "^13.2.0",
     "lucide-react": "^1.41.0",
