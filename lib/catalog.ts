@@ -1,20 +1,17 @@
 // src/lib/catalog.ts
-- import { SAMPLE_SOLUTIONS } from '@/content/vertas-data';
-+ import { SOLUTIONS } from '@/content/vertas-data';
-
-- {SAMPLE_SOLUTIONS.map((sol) => (
-+ {SOLUTIONS.map((sol) => (
+import { SAMPLE_PRODUCTS } from '@/content/vertas-data';
+import { IndustrialProduct } from '@/types/vertas';
 
 /**
- * Mặc định ẨN dữ liệu mẫu (isPrototypeOrSample: true) khi NODE_ENV=production (Fail-safe by default).
- * Chỉ hiển thị khi có cờ ghi đè tường minh NEXT_PUBLIC_SHOW_PROTOTYPES="true" (ví dụ: staging).
+ * Mặc định ẨN dữ liệu mẫu (isPrototypeOrSample: true) khi NODE_ENV=production (Fail-safe).
+ * Chỉ hiển thị khi có cờ máy chủ SHOW_PROTOTYPES="true" (môi trường staging/nội bộ).
  */
 export function getPublicProducts(): IndustrialProduct[] {
   const isProduction = process.env.NODE_ENV === 'production';
-  const showPrototypesOverride = process.env.NEXT_PUBLIC_SHOW_PROTOTYPES === 'true';
+  const showPrototypes = process.env.SHOW_PROTOTYPES === 'true';
 
   return SAMPLE_PRODUCTS.filter((product) => {
-    if (product.isPrototypeOrSample && isProduction && !showPrototypesOverride) {
+    if (product.isPrototypeOrSample && isProduction && !showPrototypes) {
       return false;
     }
     return true;
