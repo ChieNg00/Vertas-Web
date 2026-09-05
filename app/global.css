@@ -6,7 +6,7 @@
   --color-industrial-surface: #0F172A;
   --color-industrial-elevated: #1E293B;
 
-  /* Đường viền kỹ thuật (giữ nguyên không thêm alpha modifier /NN) */
+  /* Đường viền kỹ thuật */
   --color-industrial-border: rgba(148, 163, 184, 0.12);
   --color-industrial-border-hover: rgba(16, 185, 129, 0.4);
 
@@ -29,8 +29,17 @@
   --shadow-industrial-glow-hover: 0 0 25px rgba(16, 185, 129, 0.4);
 }
 
-/* Ánh xạ toàn bộ semantic token của shadcn/ui về hệ industrial */
 @theme inline {
+  /* Bán kính gốc chuẩn thiết bị đo */
+  --radius: 0.25rem;
+
+  /* Thang đo bán kính dẫn xuất bắt buộc cho shadcn/ui */
+  --radius-sm: calc(var(--radius) - 4px); /* 0px - sắc nét tuyệt đối */
+  --radius-md: calc(var(--radius) - 2px); /* 2px - bo vi mô */
+  --radius-lg: var(--radius);             /* 4px - bo khung tiêu chuẩn */
+  --radius-xl: calc(var(--radius) + 4px); /* 8px - bo panel ngoài */
+
+  /* Ánh xạ token ngữ nghĩa của shadcn/ui */
   --color-background: var(--color-industrial-base);
   --color-foreground: var(--color-industrial-slate-body);
 
@@ -58,12 +67,8 @@
   --color-border: var(--color-industrial-border);
   --color-input: var(--color-industrial-surface);
   --color-ring: var(--color-industrial-emerald);
-
-  /* Bo góc kỹ nghệ 4px dứt khoát */
-  --radius: 0.25rem;
 }
 
-/* Quản lý vùng chọn toàn cục duy nhất */
 ::selection {
   background-color: var(--color-industrial-emerald);
   color: #000000;
