@@ -7,6 +7,19 @@ export type BusinessSector =
   | 'EMBEDDED_SOFTWARE'     // Mã 6219: Lập trình máy tính & phần mềm nhúng
   | 'RD_INNOVATION';         // Mã 7211, 7212: R&D Khoa học & Công nghệ
 
+export type ComplianceLevel = 
+  | 'CERTIFIED'                  // Đã có chứng nhận chính thức
+  | 'SELF_DECLARED_COMPLIANT'   // Tự công bố hợp chuẩn kỹ thuật
+  | 'IN_PROGRESS'               // Đang trong quy trình thử nghiệm
+  | 'PLANNED';                  // Trong lộ trình R&D
+
+export interface CertificationStatus {
+  standard: string;             // 'CE', 'RoHS', 'ISO 9001', 'IEC 61010-1'...
+  status: ComplianceLevel;
+  declarationNote?: string;     // Chi tiết tiêu chuẩn viện dẫn
+  dossierNumber?: string;       // Mã hồ sơ kiểm định (nếu có)
+}
+
 export interface CompanyLegalInfo {
   legalNameVN: string;
   legalNameEN: string;
@@ -16,6 +29,7 @@ export interface CompanyLegalInfo {
   representative: string;
   registeredOffice: string;
   natureOfOperations: string;
+  hotlineEngineering: string;
 }
 
 export interface TechnicalSpec {
@@ -27,13 +41,20 @@ export interface TechnicalSpec {
 
 export interface IndustrialProduct {
   id: string;
+  slug: string;
   partNumber: string;
   name: string;
   sector: BusinessSector;
   tagline: string;
+  images: {
+    thumbnail: string;
+    diagram?: string;
+    gallery: string[];
+  };
   specs: TechnicalSpec[];
-  certifications: string[];
+  certifications: CertificationStatus[];
   leadTime: string;
+  isPrototypeOrSample: boolean; // Flag chặn rò rỉ dữ liệu demo lên production
   primaryCTA: 'REQUEST_A_QUOTE';
 }
 
