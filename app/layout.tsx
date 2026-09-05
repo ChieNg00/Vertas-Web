@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi" className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-industrial-base text-industrial-slate-body font-sans antialiased selection:bg-industrial-emerald selection:text-black">
+      <body className="bg-industrial-base text-industrial-slate-body font-sans antialiased">
         {children}
       </body>
     </html>
