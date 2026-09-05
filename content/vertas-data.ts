@@ -1,4 +1,4 @@
-// src/content/vertas-data.ts
+// content/vertas-data.ts
 import { CompanyLegalInfo, IndustrialProduct, EngineeringSolution } from '@/types/vertas';
 
 export const VERTAS_LEGAL: CompanyLegalInfo = {
@@ -26,7 +26,6 @@ export const HERO_CONTENT = {
   ]
 };
 
-// DỮ LIỆU MINH HỌA — có isPrototypeOrSample để lib/catalog.ts tự ẩn khi lên production
 export const SAMPLE_PRODUCTS: IndustrialProduct[] = [
   {
     id: 'sample-vts-axis-500',
@@ -46,16 +45,8 @@ export const SAMPLE_PRODUCTS: IndustrialProduct[] = [
       { parameter: 'Nguồn cấp công nghiệp', value: '12 - 36', unit: 'VDC' }
     ],
     certifications: [
-      {
-        standard: 'IEC 61010-1 (An toàn thiết bị đo lường)',
-        status: 'SELF_DECLARED_COMPLIANT',
-        declarationNote: 'Tuân thủ thiết kế giới hạn điện áp & cách ly an toàn theo phòng Lab nội bộ'
-      },
-      {
-        standard: 'CE EMC Directive 2014/30/EU',
-        status: 'PLANNED',
-        declarationNote: 'Lộ trình thử nghiệm tương thích điện từ dự kiến Quý IV/2026'
-      }
+      { standard: 'IEC 61010-1 (An toàn thiết bị đo lường)', status: 'SELF_DECLARED_COMPLIANT', declarationNote: 'Tuân thủ thiết kế giới hạn điện áp & cách ly an toàn theo phòng Lab nội bộ' },
+      { standard: 'CE EMC Directive 2014/30/EU', status: 'PLANNED', declarationNote: 'Lộ trình thử nghiệm tương thích điện từ dự kiến Quý IV/2026' }
     ],
     leadTime: 'Mẫu R&D: 2 tuần • Đơn hàng tích hợp: Theo tiến độ dự án',
     isPrototypeOrSample: true,
