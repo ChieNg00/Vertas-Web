@@ -60,3 +60,4 @@ export interface LeadCapturePayload {
   /** Bắt buộc theo Nghị định 13/2023/NĐ-CP */
   consentGiven: boolean;
 }
+
