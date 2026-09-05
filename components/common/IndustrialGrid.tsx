@@ -4,10 +4,10 @@ import React from 'react';
 export const IndustrialGrid: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Background base tone */}
-      <div className="absolute inset-0 bg-[#090D16]" />
+      {/* Nền sử dụng token chuẩn */}
+      <div className="absolute inset-0 bg-industrial-base" />
 
-      {/* Blueprint Coordinate Crosshairs & Dots */}
+      {/* Lưới toạ độ CAD */}
       <svg
         className="absolute inset-0 h-full w-full opacity-20 stroke-slate-600"
         xmlns="http://www.w3.org/2000/svg"
@@ -31,9 +31,9 @@ export const IndustrialGrid: React.FC = () => {
         <rect width="100%" height="100%" fill="url(#industrial-grid-pattern)" />
       </svg>
 
-      {/* Radial Depth Lighting (Focus in top-center) */}
+      {/* Radial Depth Lighting */}
       <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-emerald-500/10 via-cyan-500/5 to-transparent blur-[120px]" 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-industrial-emerald/10 via-industrial-cyan/5 to-transparent blur-[120px]" 
       />
     </div>
   );
