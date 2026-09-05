@@ -1,18 +1,23 @@
-// src/app/layout.tsx
+// app/layout.tsx
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
-import '@/app/globals.css';
+import './globals.css';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-jakarta',
-  display: 'swap'
+  display: 'swap',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
-  display: 'swap'
+  display: 'swap',
 });
+
+export const metadata = {
+  title: 'VERTAS — Precision in Measurement. Certainty in Control.',
+  description: 'VERTAS Company Limited — Thiết bị đo lường, kiểm tra và tích hợp giải pháp kỹ thuật công nghiệp.',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
