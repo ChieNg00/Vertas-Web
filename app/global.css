@@ -15,7 +15,7 @@
   --color-industrial-emerald-muted: #064E3B;
   --color-industrial-cyan: #06B6D4;
 
-  /* Độ tương phản văn bản đạt chuẩn WCAG AA */
+  /* Typography Contrast (WCAG AA) */
   --color-industrial-slate-body: #CBD5E1;
   --color-industrial-slate-muted: #94A3B8;
   --color-industrial-slate-code: #E2E8F0;
@@ -30,16 +30,14 @@
 }
 
 @theme inline {
-  /* Bán kính gốc chuẩn thiết bị đo */
+  /* Bán kính bo góc chuẩn thiết bị đo/CAD (4px) */
   --radius: 0.25rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 
-  /* Thang đo bán kính dẫn xuất bắt buộc cho shadcn/ui */
-  --radius-sm: calc(var(--radius) - 4px); /* 0px - sắc nét tuyệt đối */
-  --radius-md: calc(var(--radius) - 2px); /* 2px - bo vi mô */
-  --radius-lg: var(--radius);             /* 4px - bo khung tiêu chuẩn */
-  --radius-xl: calc(var(--radius) + 4px); /* 8px - bo panel ngoài */
-
-  /* Ánh xạ token ngữ nghĩa của shadcn/ui */
+  /* Ánh xạ toàn bộ semantic tokens của shadcn/ui */
   --color-background: var(--color-industrial-base);
   --color-foreground: var(--color-industrial-slate-body);
 
