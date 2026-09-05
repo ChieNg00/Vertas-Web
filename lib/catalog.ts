@@ -1,6 +1,9 @@
 // src/lib/catalog.ts
-import { SAMPLE_PRODUCTS } from '@/content/vertas-data';
-import { IndustrialProduct } from '@/types/vertas';
+- import { SAMPLE_SOLUTIONS } from '@/content/vertas-data';
++ import { SOLUTIONS } from '@/content/vertas-data';
+
+- {SAMPLE_SOLUTIONS.map((sol) => (
++ {SOLUTIONS.map((sol) => (
 
 /**
  * Mặc định ẨN dữ liệu mẫu (isPrototypeOrSample: true) khi NODE_ENV=production (Fail-safe by default).
