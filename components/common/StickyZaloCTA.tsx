@@ -1,4 +1,4 @@
-// src/components/common/StickyZaloCTA.tsx
+// components/common/StickyZaloCTA.tsx
 'use client';
 
 import React from 'react';
@@ -8,10 +8,10 @@ interface StickyZaloCTAProps {
   contactNumber?: string;
 }
 
-export const StickyZaloCTA: React.FC<StickyZaloCTAProps> = ({ 
-  contactNumber = process.env.NEXT_PUBLIC_ZALO_PHONE || '' 
+export const StickyZaloCTA: React.FC<StickyZaloCTAProps> = ({
+  contactNumber = process.env.NEXT_PUBLIC_ZALO_PHONE || ''
 }) => {
-  if (!contactNumber) return null; // Không render nếu chưa cấu hình số
+  if (!contactNumber) return null;
 
   return (
     <aside aria-label="Kênh kỹ thuật trực tiếp" className="fixed bottom-6 right-6 z-50">
