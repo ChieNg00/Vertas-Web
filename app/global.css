@@ -6,30 +6,64 @@
   --color-industrial-surface: #0F172A;
   --color-industrial-elevated: #1E293B;
 
-  /* Đường viền & Chỉ thị kỹ thuật */
+  /* Đường viền kỹ thuật (giữ nguyên không thêm alpha modifier /NN) */
   --color-industrial-border: rgba(148, 163, 184, 0.12);
   --color-industrial-border-hover: rgba(16, 185, 129, 0.4);
 
-  /* Màu nhận diện & Trạng thái tín hiệu */
+  /* Nhận diện thương hiệu & Tín hiệu vận hành */
   --color-industrial-emerald: #10B981;
   --color-industrial-emerald-muted: #064E3B;
   --color-industrial-cyan: #06B6D4;
 
-  /* Typography Contrast (WCAG AA Compliant) */
+  /* Độ tương phản văn bản đạt chuẩn WCAG AA */
   --color-industrial-slate-body: #CBD5E1;
   --color-industrial-slate-muted: #94A3B8;
   --color-industrial-slate-code: #E2E8F0;
 
-  /* Phông chữ kỹ thuật */
+  /* Typography */
   --font-sans: var(--font-jakarta), sans-serif;
   --font-mono: var(--font-jetbrains), monospace;
 
-  /* Shadow Token (Xóa bỏ hoàn toàn mã hex viết tay) */
+  /* Hiệu ứng phát sáng kỹ thuật */
   --shadow-industrial-glow: 0 0 20px rgba(16, 185, 129, 0.25);
   --shadow-industrial-glow-hover: 0 0 25px rgba(16, 185, 129, 0.4);
 }
 
-/* Base resets & Selection */
+/* Ánh xạ toàn bộ semantic token của shadcn/ui về hệ industrial */
+@theme inline {
+  --color-background: var(--color-industrial-base);
+  --color-foreground: var(--color-industrial-slate-body);
+
+  --color-card: var(--color-industrial-surface);
+  --color-card-foreground: var(--color-industrial-slate-body);
+
+  --color-popover: var(--color-industrial-elevated);
+  --color-popover-foreground: var(--color-industrial-slate-body);
+
+  --color-primary: var(--color-industrial-emerald);
+  --color-primary-foreground: #000000;
+
+  --color-secondary: var(--color-industrial-elevated);
+  --color-secondary-foreground: var(--color-industrial-slate-code);
+
+  --color-muted: var(--color-industrial-elevated);
+  --color-muted-foreground: var(--color-industrial-slate-muted);
+
+  --color-accent: var(--color-industrial-elevated);
+  --color-accent-foreground: var(--color-industrial-emerald);
+
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: var(--color-industrial-border);
+  --color-input: var(--color-industrial-surface);
+  --color-ring: var(--color-industrial-emerald);
+
+  /* Bo góc kỹ nghệ 4px dứt khoát */
+  --radius: 0.25rem;
+}
+
+/* Quản lý vùng chọn toàn cục duy nhất */
 ::selection {
   background-color: var(--color-industrial-emerald);
   color: #000000;
