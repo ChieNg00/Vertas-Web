@@ -11,11 +11,15 @@ export async function dispatchLead(payload: LeadCapturePayload): Promise<Dispatc
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
   const isProduction = process.env.NODE_ENV === 'production';
 
+  const quantityLine = payload.quantityRequested 
+    ? `- Số lượng yêu cầu: ${payload.quantityRequested} bộ/thiết bị\n` 
+    : '';
+
   const textSummary = `
 🚨 [YÊU CẦU MỚI TỪ WEBSITE VERTAS]
 - Loại yêu cầu: ${payload.intent === 'QUOTE_INQUIRY' ? 'Báo Giá Thiết Bị (RFQ)' : 'Tư Vấn Kỹ Thuật'}
-- Thiết bị / Mã tham chiếu: ${payload.itemRefId || 'Tư vấn giải pháp / Cải tạo máy'}
-- Người liên hệ: ${payload.contact.fullName}
+- Thiết bị / Tham chiếu: ${payload.itemRefId || 'Tư vấn giải pháp / Cải tạo máy'}
+${quantityLine}- Người liên hệ: ${payload.contact.fullName}
 - Đơn vị: ${payload.contact.companyName}
 - Email: ${payload.contact.workEmail}
 - Điện thoại: ${payload.contact.phone}
@@ -30,7 +34,7 @@ export async function dispatchLead(payload: LeadCapturePayload): Promise<Dispatc
     console.info(textSummary);
 
     if (isProduction) {
-      console.error('CRITICAL: Production thiếu LEAD_WEBHOOK_URL. Chặn báo thành công giả để tránh thất lạc lead.');
+      console.error('CRITICAL: Production thiếu LEAD_WEBHOOK_URL. Chặn báo thành công giả để tránh mất lead.');
       return {
         success: false,
         channel: 'DEV_CONSOLE',
@@ -38,7 +42,6 @@ export async function dispatchLead(payload: LeadCapturePayload): Promise<Dispatc
       };
     }
 
-    // Chỉ giả lập thành công ở môi trường local development để test giao diện
     return {
       success: true,
       channel: 'DEV_CONSOLE',
@@ -46,14 +49,14 @@ export async function dispatchLead(payload: LeadCapturePayload): Promise<Dispatc
     };
   }
 
-  // Nhánh 2: ĐÃ cấu hình Webhook URL (Hỗ trợ Discord, Slack, Google Apps Script)
+  // Nhánh 2: ĐÃ cấu hình Webhook URL
   try {
     const res = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         text: textSummary,
-        content: textSummary, // Tương thích Discord Webhook
+        content: textSummary,
         payload,
       }),
     });
@@ -69,7 +72,7 @@ export async function dispatchLead(payload: LeadCapturePayload): Promise<Dispatc
     };
   } catch (err: unknown) {
     console.error('[LEAD DISPATCH FAILED]', err);
-    console.info('[DỮ LIỆU LEAD GỐC]', textSummary); // Giữ vết log cứu hộ dữ liệu
+    console.info('[DỮ LIỆU LEAD GỐC]', textSummary);
     return {
       success: false,
       channel: 'WEBHOOK',
