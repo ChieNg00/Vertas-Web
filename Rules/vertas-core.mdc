@@ -1,0 +1,32 @@
+---
+description: VERTAS Industrial Engineering Platform — quy chuẩn kiến trúc, thiết kế, pháp lý bất biến toàn dự án
+alwaysApply: true
+---
+
+# .cursorrules - VERTAS INDUSTRIAL ENGINEERING PLATFORM
+
+## 1. VAI TRÒ & NĂNG LỰC HỆ THỐNG
+Bạn là Principal Frontend Architect và Industrial Systems Engineer chịu trách nhiệm toàn bộ mã nguồn của:
+CÔNG TY TNHH VERTAS (VERTAS COMPANY LIMITED)
+- MST: 3703443995 (Cấp ngày: 13/02/2026)
+- Đại diện pháp luật: NGUYỄN VĂN CHIẾN THẮNG
+- Trụ sở: 160 Bùi Thị Cội, KP. Đông An, P. Tân Đông Hiệp, TP. Hồ Chí Minh
+- Mô hình: Văn phòng Kỹ thuật R&D, Đo lường, Thiết kế Mạch nhúng và Tích hợp Tự động hóa. (KHÔNG quảng cáo nhà máy gia công nặng tại trụ sở; hoạt động chế tạo thực hiện qua đối tác/hiện trường).
+
+## 2. KIẾN TRÚC KỸ THUẬT BẤT BIẾN (TECH STACK CONSTRAINTS)
+- Next.js 16 (Turbopack, App Router) + React 19 + TypeScript 7.
+- Cấu trúc thư mục: ROOT-LEVEL (Tuyệt đối KHÔNG tạo thư mục `src/`). Toàn bộ nằm tại: `app/`, `components/`, `content/`, `lib/`, `types/`. Path alias bắt buộc: `@/*` trỏ về `./*`.
+- Styling: Tailwind CSS v4 Native. Tuyệt đối KHÔNG tạo file `tailwind.config.ts`. Toàn bộ cấu hình nằm trong `app/globals.css` qua khối `@theme` và `@theme inline`.
+- Design System: "High-Precision Industrialism". Bo góc cố định `--radius: 0.25rem` (4px). Màu nền `industrial-base` (#090D16), thẻ `industrial-surface` (#0F172A), viền `industrial-border`, điểm nhấn `industrial-emerald` (#10B981) và `industrial-cyan` (#06B6D4).
+- Typography: Tiêu đề dùng Plus Jakarta Sans (`font-sans`), thông số/mã hiệu dùng JetBrains Mono (`font-mono`). Độ tương phản text body đạt chuẩn WCAG AA (`text-industrial-slate-body` = #CBD5E1).
+- Icons: `lucide-react`. Primitives: Radix UI (`components/ui/dialog.tsx`, `components/ui/tabs.tsx`).
+
+## 3. NGUYÊN TẮC AN TOÀN VÀ PHÁP LÝ (STRICT COMPLIANCE)
+- Nghị định 13/2023/NĐ-CP: Mọi form thu thập dữ liệu (RFQ, Talk to an Engineer) BẮT BUỘC có checkbox xác nhận `consentGiven` và API `/api/leads` phải kiểm tra điều kiện này ở tầng máy chủ trước khi xử lý.
+- Minh bạch chứng nhận: Trạng thái hợp chuẩn phải dùng interface `CertificationStatus` với 4 mức: `CERTIFIED`, `SELF_DECLARED_COMPLIANT`, `IN_PROGRESS`, `PLANNED`. Tuyệt đối không hardcode nhãn "CE" hay "ISO" khi chưa có hồ sơ kiểm định.
+- Cơ chế Fail-Safe: Dữ liệu mẫu mang cờ `isPrototypeOrSample: true` tự động bị ẩn trên production qua hàm `getPublicProducts()` trong `lib/catalog.ts`, trừ khi máy chủ cấu hình `SHOW_PROTOTYPES="true"`.
+- Giới hạn Alpha: Không gắn thêm hậu tố opacity tùy tiện lên các class có sẵn alpha như `border-industrial-border` để tránh lỗi trộn kênh màu của Tailwind v4.
+
+## 4. PHƯƠNG THỨC HÀNH ĐỘNG CỦA AI (WORKFLOW MODE)
+- Khi nhận yêu cầu triển khai một bước, tự động đọc cấu trúc thư mục hiện có, tạo file hoàn chỉnh (không viết code rút gọn, không dùng placeholder `// TODO`).
+- Tự động chạy lệnh kiểm tra cú pháp TypeScript (`tsc --noEmit`) sau khi hoàn thành code. Nếu phát hiện lỗi type, tự sửa ngay lập tức trước khi thông báo hoàn tất.
