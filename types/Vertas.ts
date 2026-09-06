@@ -70,6 +70,7 @@ export interface CompanyLegalInfo {
 export interface LeadCapturePayload {
   intent: 'QUOTE_INQUIRY' | 'ENGINEERING_CONSULTATION';
   itemRefId?: string;
+  quantityRequested?: number; // Định kiểu số lượng rõ ràng cho RFQ
   projectDescription: string;
   contact: {
     fullName: string;
@@ -77,5 +78,6 @@ export interface LeadCapturePayload {
     companyName: string;
     phone: string;
   };
+  /** Bắt buộc theo Nghị định 13/2023/NĐ-CP */
   consentGiven: boolean;
 }
